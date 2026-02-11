@@ -22,7 +22,7 @@
         class="sticky top-0 z-50 bg-gradient-to-r from-[#1a0000] to-[#2a0000] border-b-2 border-[#DC143C]/50 shadow-lg backdrop-blur-sm"
       >
         <div
-          class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"
+          class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative"
         >
           <div class="flex items-center gap-3">
             <div
@@ -34,17 +34,19 @@
               <div class="font-bold text-lg text-white">MERCH</div>
               <div class="text-xs text-[#DC143C] font-bold">БАТАЛЬЙОН</div>
             </div>
-
-            <!-- Header contact placed under the title for neater layout -->
-            <div class="header-contact hidden sm:flex ml-4 mt-2">
-              <span class="contact-text"
-                >В даний момент за отриманням мерчу<br />звертайтесь за цим
-                контактом — <strong>Руслан: хххххххххх</strong></span
-              >
-            </div>
           </div>
 
           <nav class="hidden md:flex items-center gap-8"></nav>
+
+          <!-- Centered header contact -->
+          <div
+            class="header-contact hidden sm:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          >
+            <span class="contact-text pointer-events-auto"
+              >В даний момент за отриманням мерчу<br />звертайтесь за цим
+              контактом — <strong>Руслан: хххххххххх</strong></span
+            >
+          </div>
 
           <button
             id="cart-btn"
