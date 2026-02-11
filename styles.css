@@ -227,18 +227,19 @@ body::before {
   font-weight: 700;
   font-size: 14px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 6px;
   max-width: 640px;
+  text-align: center;
 }
 
 .header-contact .contact-text {
   color: #fff;
   font-size: 13px;
-  line-height: 1.1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.15;
+  white-space: normal;
 }
 
 @media (max-width: 420px) {
