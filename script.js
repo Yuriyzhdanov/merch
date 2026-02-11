@@ -28,12 +28,25 @@ function getSaleTypeClass(saleType) {
   }
 }
 
-// ===== Initialize: Assign random saleType to clothes only =====
-products.forEach(product => {
-  if (product.category === 'clothes') {
-    product.saleType = getRandomSaleType()
-  }
-})
+// ===== Data enrichment: add saleType to clothes only (run once) =====
+function enrichProducts(list) {
+  if (!Array.isArray(list)) return
+  list.forEach(product => {
+    if (product.category === 'clothes' && !product.saleType) {
+      product.saleType = getRandomSaleType()
+    }
+  })
+}
+
+// Run enrichment at startup
+enrichProducts(products)
+
+// ===== UI helper: render sale badge HTML (keeps renderProducts clean) =====
+function renderSaleBadge(product) {
+  if (!product || !product.saleType) return ''
+  const cls = getSaleTypeClass(product.saleType)
+  return `<div class="mb-3"><span class="inline-block px-3 py-1 text-xs font-bold rounded-full ${cls}">${product.saleType}</span></div>`
+}
 
 let cart = []
 let activeCategory = 'all'
@@ -79,124 +92,62 @@ function renderProducts() {
       ? products
       : products.filter(p => p.category === activeCategory)
 
-  grid.innerHTML = filtered
-    .map(product => {
-      const isClothes = product.category === 'clothes'
-      const statusClass = product.inStock
-        ? 'status-available'
-        : 'status-unavailable'
-      const statusText = product.inStock
-        ? '✓ Є в наявності'
-        : '✗ Нема в наявності'
+  const cards = filtered.map(product => {
+    const statusClass = product.inStock ? 'status-available' : 'status-unavailable'
+    const statusText = product.inStock ? '✓ Є в наявності' : '✗ Нема в наявності'
 
-      const imgs =
-        Array.isArray(product.images) && product.images.length
-          ? product.images
-          : []
-      const firstImg = imgs[0] || '/img/no-image.png'
-      const hasMany = imgs.length > 1
+    const imgs = Array.isArray(product.images) && product.images.length ? product.images : []
+    const firstImg = imgs[0] || '/img/no-image.png'
+    const hasMany = imgs.length > 1
 
-      return `
-        <div class="product-card">
-          <div class="aspect-square bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden"
-               data-carousel="true"
-               data-product-id="${product.id}">
-            
-            <img
-              src="${firstImg}"
-              alt="${product.name}"
-              class="w-full h-full object-cover"
-              loading="lazy"
-              data-carousel-img="true"
-              draggable="false"
-              onerror="this.src='/img/no-image.png'"
-            />
+    const categoryLabel = product.category === 'clothes' ? 'ОДЯГ' : product.category === 'accessories' ? 'АКСЕСУАРИ' : 'КАНЦЕЛЯРІЯ'
 
-            ${
-              hasMany
-                ? `
-                <button class="carousel-btn left-3" type="button" data-carousel-prev="true" aria-label="Prev">‹</button>
-                <button class="carousel-btn right-3" type="button" data-carousel-next="true" aria-label="Next">›</button>
-                <div class="carousel-dots" data-carousel-dots="true">
-                  ${imgs
-                    .map(
-                      (_, i) =>
-                        `<span class="carousel-dot ${i === 0 ? 'active' : ''}" data-dot="${i}"></span>`,
-                    )
-                    .join('')}
-                </div>
-              `
-                : ''
-            }
-
-            <div class="absolute top-3 right-3 px-2 py-1 bg-gray-900 text-white text-xs font-bold rounded z-[7]">
-              ${
-                product.category === 'clothes'
-                  ? 'ОДЯГ'
-                  : product.category === 'accessories'
-                    ? 'АКСЕСУАРИ'
-                    : 'КАНЦЕЛЯРІЯ'
-              }
-            </div>
-          </div>
-
-          <div class="p-4 flex flex-col flex-grow">
-            <h3 class="font-bold text-base mb-2 text-gray-900">${product.name}</h3>
-
-            <div class="mb-2">
-              <span class="status-badge ${statusClass}">${statusText}</span>
-            </div>
-
-            ${
-              product.saleType
-                ? `
-                <div class="mb-3">
-                  <span class="inline-block px-3 py-1 text-xs font-bold rounded-full ${getSaleTypeClass(product.saleType)}">
-                    ${product.saleType}
-                  </span>
-                </div>
-              `
-                : ''
-            }
-
-            ${
-              isClothes
-                ? `
-                  <div class="mb-4">
-                    <p class="text-xs font-bold text-gray-700 mb-2">РОЗМІРИ:</p>
-                    <div class="flex gap-2 flex-wrap">
-                      ${Object.entries(product.sizes)
-                        .map(
-                          ([size, available]) => `
-                            <div class="size-btn ${available ? 'available' : 'unavailable'}" title="${
-                              available ? 'Доступно' : 'Недоступно'
-                            }">
-                              ${size}
-                            </div>
-                          `,
-                        )
-                        .join('')}
-                    </div>
-                  </div>
-                `
-                : ''
-            }
-
-            <div class="flex items-center justify-between mt-auto">
-              <span class="text-lg font-bold text-[#8B0000]">${product.price} ₴</span>
-              <button
-                onclick="addToCart(${product.id})"
-                class="px-3 py-2 bg-gradient-to-r from-[#8B0000] to-[#DC143C] text-white font-bold rounded-lg hover:shadow-lg transition-all text-sm"
-                type="button"
-              >
-                + ДОДАТИ
-              </button>
-            </div>
+    const sizesHtml = product.sizes
+      ? `
+        <div class="mb-4">
+          <p class="text-xs font-bold text-gray-700 mb-2">РОЗМІРИ:</p>
+          <div class="flex gap-2 flex-wrap">
+            ${Object.entries(product.sizes)
+              .map(([size, available]) => `<div class="size-btn ${available ? 'available' : 'unavailable'}" title="${available ? 'Доступно' : 'Недоступно'}">${size}</div>`)
+              .join('')}
           </div>
         </div>
       `
-    })
-    .join('')
+      : ''
+
+    const carouselControls = hasMany
+      ? `
+        <button class="carousel-btn left-3" type="button" data-carousel-prev="true" aria-label="Prev">‹</button>
+        <button class="carousel-btn right-3" type="button" data-carousel-next="true" aria-label="Next">›</button>
+        <div class="carousel-dots" data-carousel-dots="true">
+          ${imgs.map((_, i) => `<span class="carousel-dot ${i === 0 ? 'active' : ''}" data-dot="${i}"></span>`).join('')}
+        </div>
+      `
+      : ''
+
+    return `
+      <div class="product-card">
+        <div class="aspect-square bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden" data-carousel="true" data-product-id="${product.id}">
+          <img src="${firstImg}" alt="${product.name}" class="w-full h-full object-cover" loading="lazy" data-carousel-img="true" draggable="false" onerror="this.src='/img/no-image.png'" />
+          ${carouselControls}
+          <div class="absolute top-3 right-3 px-2 py-1 bg-gray-900 text-white text-xs font-bold rounded z-[7]">${categoryLabel}</div>
+        </div>
+
+        <div class="p-4 flex flex-col flex-grow">
+          <h3 class="font-bold text-base mb-2 text-gray-900">${product.name}</h3>
+          <div class="mb-2"><span class="status-badge ${statusClass}">${statusText}</span></div>
+          ${renderSaleBadge(product)}
+          ${sizesHtml}
+          <div class="flex items-center justify-between mt-auto">
+            <span class="text-lg font-bold text-[#8B0000]">${product.price} ₴</span>
+            <button onclick="addToCart(${product.id})" class="px-3 py-2 bg-gradient-to-r from-[#8B0000] to-[#DC143C] text-white font-bold rounded-lg hover:shadow-lg transition-all text-sm" type="button">+ ДОДАТИ</button>
+          </div>
+        </div>
+      </div>
+    `
+  })
+
+  grid.innerHTML = cards.join('')
 
   /* // восстановить текущие индексы после перерендера */
   filtered.forEach(p => {
