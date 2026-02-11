@@ -217,6 +217,30 @@ body::before {
   background: rgba(255, 255, 255, 0.95);
 }
 
+/* Header contact message */
+.header-contact {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(220, 20, 60, 0.12);
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 640px;
+}
+
+.header-contact .contact-text {
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: 420px) {
   .carousel-btn {
     width: 32px;
