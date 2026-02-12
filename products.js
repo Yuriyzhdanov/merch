@@ -87,7 +87,7 @@ const products = [
     name: 'Ручка "САПСАН"',
     price: 89,
     category: 'stationery',
-    images: ['/img/pen_1_1.jpg'],
+    images: ['./img/pen_1_1.jpg'],
     inStock: true,
   },
   {
@@ -95,7 +95,7 @@ const products = [
     name: 'Олівець тактичний',
     price: 120,
     category: 'stationery',
-    images: ['/img/pen_1_1.jpg'],
+    images: ['./img/pen_1_1.jpg'],
     inStock: true,
   },
   {
