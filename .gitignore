@@ -1,1 +1,23 @@
-img/
+# Dependency directories
+node_modules/
+.npm
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Build files
+dist/
+build/
+.cache/
+
+# Environment variables
+.env
+.env.local

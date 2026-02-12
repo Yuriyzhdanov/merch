@@ -1,0 +1,27 @@
+{
+  "name": "site-merch-sapsan",
+  "version": "1.0.0",
+  "description": "SAPSAN 421 Battalion Merch Store - Supporting Ukrainian Warriors",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/site_merch_sapsan.git"
+  },
+  "keywords": [
+    "merch",
+    "store",
+    "sapsan",
+    "ukraine",
+    "army",
+    "battalion"
+  ],
+  "author": "SAPSAN 421 Battalion",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
