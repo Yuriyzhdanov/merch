@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <style>
+      .no-img-bg { fill: #f3f4f6; }
+      .no-img-text { font-family: Arial, sans-serif; font-size: 24px; fill: #9ca3af; text-anchor: middle; }
+      .no-img-icon { fill: #d1d5db; }
+    </style>
+  </defs>
+  <rect class="no-img-bg" width="400" height="400"/>
+  <rect class="no-img-icon" x="100" y="100" width="200" height="200" rx="8" opacity="0.3"/>
+  <circle class="no-img-icon" cx="170" cy="150" r="30" opacity="0.4"/>
+  <path class="no-img-icon" d="M 100 300 L 150 240 L 200 280 L 300 140 L 300 340 Z" opacity="0.3"/>
+  <text class="no-img-text" x="200" y="370">Немає зображення</text>
+</svg>

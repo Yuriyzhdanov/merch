@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="uk" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merch Store - Підтримай 421 батальйон SAPSAN!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/_sdk/element_sdk.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="./styles.css" rel="stylesheet" />
+
+    <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  </head>
+
+  <body class="h-full bg-white text-gray-900 overflow-auto">
+    <div id="app" class="w-full h-full flex flex-col">
+      <!-- Header -->
+      <header
+        class="sticky top-0 z-50 bg-gradient-to-r from-[#1a0000] to-[#2a0000] border-b-2 border-[#DC143C]/50 shadow-lg backdrop-blur-sm"
+      >
+        <div
+          class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between relative"
+        >
+          <div class="flex items-center gap-3">
+            <img src="./img/HighContrast 1.png" class="h-12 w-auto" />
+            <div>
+              <div class="font-bold text-lg text-white">SAPSAN 421</div>
+              <div class="text-xs text-[#DC143C] font-bold">БАТАЛЬЙОН</div>
+            </div>
+          </div>
+
+          <nav class="hidden md:flex items-center gap-8"></nav>
+
+          <!-- contact removed from sticky header so it scrolls with content -->
+
+          <button
+            id="cart-btn"
+            class="relative p-3 bg-[#DC143C] rounded-lg hover:bg-[#FF1744] transition-all text-white font-bold shadow-lg hover:shadow-xl"
+            type="button"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
+            <span
+              id="cart-count"
+              class="absolute -top-2 -right-2 w-6 h-6 bg-[#FFD700] text-black text-xs font-bold rounded-full flex items-center justify-center"
+              >0</span
+            >
+          </button>
+        </div>
+      </header>
+
+      <!-- Catalog Section -->
+      <section id="catalog" class="py-10 px-4 flex-1">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16">
+            <div
+              class="header-contact hidden sm:flex items-center justify-center mx-auto"
+            >
+              <span class="contact-text"
+                >В даний момент за отриманням мерчу<br />звертайтесь за цим
+                контактом —
+                <strong>
+                  Руслан:
+                  <button
+                    id="copy-phone"
+                    class="font-bold text-[#DC143C] hover:text-[#FF1744] cursor-pointer transition-colors hover:underline bg-none border-none p-0"
+                    title="Натисніть для копіювання"
+                  >
+                    0989272939
+                  </button></strong
+                ></span
+              >
+            </div>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="flex flex-wrap justify-center gap-3 mb-16">
+            <button
+              class="category-btn active px-6 py-2 bg-[#8B0000] text-white rounded-full font-bold transition-all hover:bg-[#A00000] shadow-md"
+              data-category="all"
+              type="button"
+            >
+              Всі товари
+            </button>
+            <button
+              class="category-btn px-6 py-2 bg-white text-gray-900 border-2 border-gray-300 rounded-full font-bold transition-all hover:border-[#8B0000] hover:text-[#8B0000]"
+              data-category="clothes"
+              type="button"
+            >
+              👕 Одяг
+            </button>
+            <button
+              class="category-btn px-6 py-2 bg-white text-gray-900 border-2 border-gray-300 rounded-full font-bold transition-all hover:border-[#8B0000] hover:text-[#8B0000]"
+              data-category="accessories"
+              type="button"
+            >
+              📓 Аксесуари
+            </button>
+            <button
+              class="category-btn px-6 py-2 bg-white text-gray-900 border-2 border-gray-300 rounded-full font-bold transition-all hover:border-[#8B0000] hover:text-[#8B0000]"
+              data-category="stationery"
+              type="button"
+            >
+              ✏️ Канцелярія
+            </button>
+          </div>
+
+          <!-- Products Grid -->
+          <div
+            id="products-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          ></div>
+        </div>
+      </section>
+
+      <!-- Sale Types Section -->
+      <section
+        id="sale-types"
+        class="py-20 px-4 bg-white border-t-2 border-gray-300"
+      >
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-4xl font-bold mb-12 text-gray-900">ТИПИ ПРОДАЖУ</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div
+              class="p-8 bg-green-50 rounded-lg border-2 border-green-300 hover:shadow-lg transition-all"
+            >
+              <div
+                class="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center"
+              >
+                <span class="text-3xl">🟢</span>
+              </div>
+              <h3 class="text-lg font-bold mb-4 text-green-700">
+                Вільний продаж
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Ви можете звернутись до нас та відразу купити продукцію при її
+                наявності, для себе, або для цивільних друзів.
+              </p>
+            </div>
+            <div
+              class="p-8 bg-yellow-50 rounded-lg border-2 border-yellow-300 hover:shadow-lg transition-all"
+            >
+              <div
+                class="w-16 h-16 mx-auto mb-4 bg-yellow-100 rounded-full flex items-center justify-center"
+              >
+                <span class="text-3xl">🟡</span>
+              </div>
+              <h3 class="text-lg font-bold mb-4 text-yellow-700">
+                З погодження
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Ви можете купити або отримати безкоштовно дану продукцію лише з
+                погодження КБ, НШ.
+              </p>
+            </div>
+            <div
+              class="p-8 bg-red-50 rounded-lg border-2 border-red-300 hover:shadow-lg transition-all"
+            >
+              <div
+                class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center"
+              >
+                <span class="text-3xl">🔴</span>
+              </div>
+              <h3 class="text-lg font-bold mb-4 text-red-700">По замовленню</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Ви можете залишити заявку на дану продукцію, і ми просто
+                включимо її в партію коли замовлятимемо собі. (Наприклад
+                прапори, чи подяки).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="py-20 px-4 bg-gray-50 border-t-2 border-black">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-4xl font-bold mb-12 text-gray-900">
+            ЧОМУ ОБИРАЮТЬ НАС?
+          </h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div
+              class="p-8 bg-white rounded-lg border-2 border-gray-200 hover:border-[#8B0000] hover:shadow-lg transition-all"
+            >
+              <div
+                class="w-16 h-16 mx-auto mb-4 bg-[#8B0000]/10 rounded-full flex items-center justify-center"
+              >
+                <span class="text-3xl">❤️</span>
+              </div>
+              <h3 class="text-lg font-bold mb-2 text-gray-900">ПІДТРИМКА</h3>
+              <p class="text-gray-600">
+                Кожна покупка допомагає українським воїнам та їхнім сім'ям
+              </p>
+            </div>
+            <div
+              class="p-8 bg-white rounded-lg border-2 border-gray-200 hover:border-[#8B0000] hover:shadow-lg transition-all"
+            >
+              <div
+                class="w-16 h-16 mx-auto mb-4 bg-[#8B0000]/10 rounded-full flex items-center justify-center"
+              >
+                <span class="text-3xl">⭐</span>
+              </div>
+              <h3 class="text-lg font-bold mb-2 text-gray-900">ЯКІСТЬ</h3>
+              <p class="text-gray-600">
+                Преміальні матеріали та сучасний дизайн для справжніх патріотів
+              </p>
+            </div>
+            <div
+              class="p-8 bg-white rounded-lg border-2 border-gray-200 hover:border-[#8B0000] hover:shadow-lg transition-all"
+            >
+              <div
+                class="w-16 h-16 mx-auto mb-4 bg-[#8B0000]/10 rounded-full flex items-center justify-center"
+              >
+                <span class="text-3xl">🛡</span>
+              </div>
+              <h3 class="text-lg font-bold mb-2 text-gray-900">НАДІЙНІСТЬ</h3>
+              <p class="text-gray-600">
+                Перевірені матеріали та відповідальне виробництво
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        id="contact"
+        class="py-12 px-4 bg-black text-white border-t-4 border-[#8B0000]"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            <div class="flex items-center gap-3">
+              <img src="./img/HighContrast 1.png" class="h-12 w-auto" />
+              <div>
+                <div class="font-bold text-lg text-white">SAPSAN 421</div>
+                <div class="text-xs text-[#DC143C] font-bold">БАТАЛЬЙОН</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-6">
+              <a
+                href="https://www.facebook.com/421st.army"
+                class="text-gray-400 hover:text-[#DC143C] transition-colors font-semibold"
+                target="_blank"
+                >FB</a
+              >
+              <a
+                href="https://x.com"
+                class="text-gray-400 hover:text-[#DC143C] transition-colors font-semibold"
+                target="_blank"
+                >Twitter</a
+              >
+              <a
+                href="https://www.youtube.com/@421st_army"
+                class="text-gray-400 hover:text-[#DC143C] transition-colors font-semibold"
+                target="_blank"
+                >Youtube</a
+              >
+              <a
+                href="https://www.instagram.com/421st.army/"
+                class="text-gray-400 hover:text-[#DC143C] transition-colors font-semibold"
+                target="_blank"
+                >Instagram</a
+              >
+              <a
+                href="https://t.me/s/the421starmy"
+                class="text-gray-400 hover:text-[#DC143C] transition-colors font-semibold"
+                target="_blank"
+                >Telegram</a
+              >
+              <a
+                href="https://www.tiktok.com/discover/421-батальон-сапсан?is_from_webapp=1&sender_device=pc"
+                class="text-gray-400 hover:text-[#DC143C] transition-colors font-semibold"
+                target="_blank"
+                >TikTok</a
+              >
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Cart Modal -->
+      <div id="cart-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/40" id="cart-overlay"></div>
+        <div
+          class="absolute right-0 top-0 h-full w-full max-w-md bg-white border-l-4 border-[#8B0000] p-6 overflow-auto shadow-2xl"
+        >
+          <div class="flex items-center justify-between mb-8">
+            <h3 class="text-xl font-bold text-gray-900">КОШИК</h3>
+            <button
+              id="close-cart"
+              class="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              type="button"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewbox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div id="cart-items" class="space-y-4 mb-8">
+            <!-- Cart items will be rendered here -->
+          </div>
+
+          <div id="cart-empty" class="text-center py-12 text-gray-500">
+            <svg
+              class="w-16 h-16 mx-auto mb-4 opacity-50"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
+            <p class="font-semibold">Кошик порожній</p>
+          </div>
+
+          <div id="cart-footer" class="hidden border-t-2 border-gray-200 pt-6">
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-gray-700 font-bold">Всього:</span>
+              <span id="cart-total" class="text-2xl font-bold text-[#8B0000]"
+                >0 ₴</span
+              >
+            </div>
+            <button
+              class="w-full py-3 bg-gradient-to-r from-[#8B0000] to-[#DC143C] text-white font-bold rounded-lg hover:shadow-lg transition-all"
+              type="button"
+            >
+              ОФОРМИТИ ЗАМОВЛЕННЯ
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./products.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

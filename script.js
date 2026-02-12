@@ -104,7 +104,7 @@ function renderProducts() {
       Array.isArray(product.images) && product.images.length
         ? product.images
         : []
-    const firstImg = imgs[0] || '/img/no-image.png'
+    const firstImg = imgs[0] || './img/no-image.svg'
     const hasMany = imgs.length > 1
 
     const categoryLabel =
@@ -143,7 +143,7 @@ function renderProducts() {
     return `
       <div class="product-card">
         <div class="aspect-square bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden" data-carousel="true" data-product-id="${product.id}">
-          <img src="${firstImg}" alt="${product.name}" class="w-full h-full object-cover" loading="lazy" data-carousel-img="true" draggable="false" onerror="this.src='/img/no-image.png'" />
+          <img src="${firstImg}" alt="${product.name}" class="w-full h-full object-cover" loading="lazy" data-carousel-img="true" draggable="false" onerror="this.src='./img/no-image.svg'" />
           ${carouselControls}
           <div class="absolute top-3 right-3 px-2 py-1 bg-gray-900 text-white text-xs font-bold rounded z-[7]">${categoryLabel}</div>
         </div>
@@ -211,7 +211,7 @@ function updateCart() {
         const img =
           Array.isArray(item.images) && item.images.length
             ? item.images[0]
-            : '/img/no-image.png'
+            : './img/no-image.svg'
         return `
           <div class="flex items-center gap-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
             <div class="w-14 h-14 rounded-lg overflow-hidden bg-white border border-gray-200 shrink-0">
@@ -220,7 +220,7 @@ function updateCart() {
                 alt="${item.name}"
                 class="w-full h-full object-cover"
                 loading="lazy"
-                onerror="this.src='/img/no-image.png'"
+                onerror="this.src='./img/no-image.svg'"
               />
             </div>
 
