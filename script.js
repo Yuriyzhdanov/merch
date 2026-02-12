@@ -93,14 +93,26 @@ function renderProducts() {
       : products.filter(p => p.category === activeCategory)
 
   const cards = filtered.map(product => {
-    const statusClass = product.inStock ? 'status-available' : 'status-unavailable'
-    const statusText = product.inStock ? '✓ Є в наявності' : '✗ Нема в наявності'
+    const statusClass = product.inStock
+      ? 'status-available'
+      : 'status-unavailable'
+    const statusText = product.inStock
+      ? '✓ Є в наявності'
+      : '✗ Нема в наявності'
 
-    const imgs = Array.isArray(product.images) && product.images.length ? product.images : []
+    const imgs =
+      Array.isArray(product.images) && product.images.length
+        ? product.images
+        : []
     const firstImg = imgs[0] || '/img/no-image.png'
     const hasMany = imgs.length > 1
 
-    const categoryLabel = product.category === 'clothes' ? 'ОДЯГ' : product.category === 'accessories' ? 'АКСЕСУАРИ' : 'КАНЦЕЛЯРІЯ'
+    const categoryLabel =
+      product.category === 'clothes'
+        ? 'ОДЯГ'
+        : product.category === 'accessories'
+          ? 'АКСЕСУАРИ'
+          : 'КАНЦЕЛЯРІЯ'
 
     const sizesHtml = product.sizes
       ? `
@@ -108,7 +120,10 @@ function renderProducts() {
           <p class="text-xs font-bold text-gray-700 mb-2">РОЗМІРИ:</p>
           <div class="flex gap-2 flex-wrap">
             ${Object.entries(product.sizes)
-              .map(([size, available]) => `<div class="size-btn ${available ? 'available' : 'unavailable'}" title="${available ? 'Доступно' : 'Недоступно'}">${size}</div>`)
+              .map(
+                ([size, available]) =>
+                  `<div class="size-btn ${available ? 'available' : 'unavailable'}" title="${available ? 'Доступно' : 'Недоступно'}">${size}</div>`,
+              )
               .join('')}
           </div>
         </div>
@@ -276,6 +291,26 @@ document.getElementById('close-cart').addEventListener('click', () => {
 document.getElementById('cart-overlay').addEventListener('click', () => {
   document.getElementById('cart-modal').classList.add('hidden')
 })
+
+/* // Copy phone number to clipboard */
+const copyPhoneBtn = document.getElementById('copy-phone')
+if (copyPhoneBtn) {
+  copyPhoneBtn.addEventListener('click', () => {
+    const phoneNumber = '098 927 29 39'
+    navigator.clipboard
+      .writeText(phoneNumber)
+      .then(() => {
+        const originalText = copyPhoneBtn.textContent
+        copyPhoneBtn.textContent = '✓ Скопійовано!'
+        setTimeout(() => {
+          copyPhoneBtn.textContent = originalText
+        }, 2000)
+      })
+      .catch(() => {
+        alert('Не вдалось скопіювати номер')
+      })
+  })
+}
 
 /* // ===== Carousel interactions (click + swipe) ===== */
 document.getElementById('products-grid').addEventListener('click', e => {

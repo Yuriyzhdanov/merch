@@ -1,5 +1,3 @@
-// products.js
-// Externalized products data for site_catalog_v2
 const products = [
   {
     id: 1,
@@ -7,9 +5,9 @@ const products = [
     price: 1890,
     category: 'clothes',
     images: [
-      '/img/hoodie_1_1.jpg',
-      '/img/hoodie_1_2.jpg',
-      '/img/hoodie_1_3.jpg',
+      './img/hoodie_1_1.jpg',
+      './img/hoodie_1_2.jpg',
+      './img/hoodie_1_3.jpg',
     ],
     inStock: true,
     sizes: { S: true, M: true, L: true, XL: true, XXL: false },
@@ -19,7 +17,7 @@ const products = [
     name: 'Футболка "САПСАН"',
     price: 790,
     category: 'clothes',
-    images: ['/img/t-short_1_1.jpg', '/img/t-short_1_2.jpg'],
+    images: ['./img/t-short_1_1.jpg', './img/t-short_1_2.jpg'],
     inStock: true,
     sizes: { S: true, M: true, L: true, XL: true, XXL: true },
   },
@@ -28,7 +26,7 @@ const products = [
     name: 'Кепка "САПСАН"',
     price: 490,
     category: 'clothes',
-    images: ['/img/cap_1_2.jpg', '/img/cap_1_1.jpg'],
+    images: ['./img/cap_1_2.jpg', './img/cap_1_1.jpg'],
     inStock: false,
     sizes: { S: false, M: false, L: false, XL: false, XXL: false },
   },
@@ -37,7 +35,7 @@ const products = [
     name: 'Худі "САПСАН 2.0"',
     price: 1790,
     category: 'clothes',
-    images: ['/img/hoodie_2_1.jpg', '/img/hoodie_2_2.jpg'],
+    images: ['./img/hoodie_2_1.jpg', './img/hoodie_2_2.jpg'],
     inStock: true,
     sizes: { S: false, M: true, L: true, XL: true, XXL: true },
   },
@@ -46,7 +44,7 @@ const products = [
     name: 'Футболка "САПСАН"',
     price: 690,
     category: 'clothes',
-    images: ['/img/t-short_2_1.jpg', '/img/t-short_2_2.jpg'],
+    images: ['./img/t-short_2_1.jpg', './img/t-short_2_2.jpg'],
     inStock: true,
     sizes: { S: true, M: true, L: false, XL: true, XXL: false },
   },
@@ -55,7 +53,7 @@ const products = [
     name: 'Кепка "САПСАН"',
     price: 450,
     category: 'clothes',
-    images: ['/img/cap_2_1.jpg', '/img/cap_2_2.jpg'],
+    images: ['./img/cap_2_1.jpg', './img/cap_2_2.jpg'],
     inStock: true,
     sizes: { S: true, M: true, L: true, XL: true, XXL: true },
   },
@@ -64,7 +62,7 @@ const products = [
     name: 'Блокнот батальйону',
     price: 290,
     category: 'accessories',
-    images: ['/img/note_1_1.jpg', '/img/note_1_2.jpg'],
+    images: ['./img/note_1_1.jpg', './img/note_1_2.jpg'],
     inStock: true,
   },
   {
@@ -72,7 +70,7 @@ const products = [
     name: 'Планер "САПСАН"',
     price: 350,
     category: 'accessories',
-    images: ['/img/note_1_2.jpg', '/img/note_1_1.jpg'],
+    images: ['./img/note_1_2.jpg', './img/note_1_1.jpg'],
     inStock: true,
   },
   {
@@ -80,7 +78,7 @@ const products = [
     name: 'Худі "САПСАН 3.0"',
     price: 1790,
     category: 'clothes',
-    images: ['/img/hoodie_3_1.jpg', '/img/hoodie_3_2.jpg'],
+    images: ['./img/hoodie_3_1.jpg', './img/hoodie_3_2.jpg'],
     inStock: true,
     sizes: { S: false, M: true, L: true, XL: true, XXL: true },
   },
@@ -105,7 +103,7 @@ const products = [
     name: 'Набір стікерів',
     price: 149,
     category: 'stationery',
-    images: ['/img/stikers_1.jpg'],
+    images: ['./img/stikers_1.jpg'],
     inStock: true,
   },
   {
@@ -113,7 +111,7 @@ const products = [
     name: 'Брелок "САПСАН"',
     price: 99,
     category: 'accessories',
-    images: ['/img/brelok_1_1.jpg'],
+    images: ['./img/brelok_1_1.jpg'],
     inStock: true,
   },
   {
@@ -121,7 +119,7 @@ const products = [
     name: 'Термопляшка "САПСАН"',
     price: 79,
     category: 'accessories',
-    images: ['/img/termo_buttle.jpg'],
+    images: ['./img/termo_buttle.jpg'],
     inStock: true,
   },
   {
@@ -129,7 +127,7 @@ const products = [
     name: 'Термокелих "САПСАН"',
     price: 79,
     category: 'accessories',
-    images: ['/img/termo_cup_1_1.jpg', '/img/termo_cup_1_2.jpg'],
+    images: ['./img/termo_cup_1_1.jpg', './img/termo_cup_1_2.jpg'],
     inStock: true,
   },
 ]

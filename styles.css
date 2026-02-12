@@ -242,6 +242,16 @@ body::before {
   white-space: normal;
 }
 
+/* Center header contact horizontally within the header */
+.max-w-7xl > .header-contact {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  margin-top: 6px;
+  z-index: 60;
+}
+
 @media (max-width: 420px) {
   .carousel-btn {
     width: 32px;
