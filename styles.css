@@ -10,6 +10,16 @@ body {
   height: 100%;
 }
 
+/* Respect iPhone safe areas (notch / home indicator) */
+:root {
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+body {
+  padding-bottom: var(--safe-bottom);
+  padding-top: var(--safe-top);
+}
+
 #app {
   height: 100%;
   position: relative;
@@ -256,6 +266,86 @@ body::before {
   .carousel-btn {
     width: 32px;
     height: 32px;
+  }
+}
+
+/* Additional iPhone / small-screen tweaks */
+@media only screen and (max-width: 420px) {
+  /* Make the header contact visible and touch-friendly */
+  .header-contact {
+    display: flex !important;
+    position: static !important;
+    left: auto !important;
+    transform: none !important;
+    top: auto !important;
+    margin-top: 8px;
+    max-width: 92%;
+    padding: 8px 12px;
+    font-size: 14px;
+    text-align: center;
+  }
+  .header-contact .contact-text {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  /* Increase tap targets */
+  .category-btn {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  .size-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+  }
+
+  /* Layout and spacing adjustments */
+  #products-grid {
+    gap: 12px;
+  }
+  .product-card {
+    border-radius: 10px;
+  }
+
+  /* Header & footer paddings for small screens */
+  header .max-w-7xl,
+  footer .max-w-7xl {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Cart button hit area */
+  #cart-btn {
+    padding: 10px;
+  }
+
+  .carousel-dots {
+    bottom: 6px;
+  }
+
+  .status-badge {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  /* Slightly reduce large headings on small devices */
+  h2 {
+    font-size: 1.5rem;
+  }
+  .text-4xl {
+    font-size: 1.75rem;
+  }
+}
+
+/* Wider small devices (iPhone Plus / Max widths) */
+@media only screen and (min-width: 421px) and (max-width: 480px) {
+  .size-btn {
+    width: 46px;
+    height: 46px;
+  }
+  .category-btn {
+    padding: 9px 12px;
   }
 }
 
