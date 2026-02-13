@@ -112,7 +112,11 @@ function renderProducts() {
         ? 'ОДЯГ'
         : product.category === 'accessories'
           ? 'АКСЕСУАРИ'
-          : 'КАНЦЕЛЯРІЯ'
+          : product.category === 'stationery'
+            ? 'КАНЦЕЛЯРІЯ'
+            : product.category === 'symbolism'
+              ? 'СИМВОЛІКА'
+              : product.category
 
     const sizesHtml = product.sizes
       ? `
@@ -145,7 +149,7 @@ function renderProducts() {
         <div class="aspect-square bg-gradient-to-br from-gray-50 to-gray-100 relative overflow-hidden" data-carousel="true" data-product-id="${product.id}">
           <img src="${firstImg}" alt="${product.name}" class="w-full h-full object-cover" loading="lazy" data-carousel-img="true" draggable="false" onerror="this.src='./img/no-image.svg'" />
           ${carouselControls}
-          <div class="absolute top-3 right-3 px-2 py-1 bg-gray-900 text-white text-xs font-bold rounded z-[7]">${categoryLabel}</div>
+          <div class="absolute top-3 right-3 px-2 py-1 bg-gray-900 text-white text-xs font-bold rounded z-[7] product-category-label">${categoryLabel}</div>
         </div>
 
         <div class="p-4 flex flex-col flex-grow">

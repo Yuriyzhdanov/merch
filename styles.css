@@ -349,6 +349,25 @@ body::before {
   }
 }
 
+/* Keep product category label visible when hovering product cards */
+.product-category-label {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.product-card:hover .product-category-label {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ensure active category button keeps white text and red background on hover */
+.category-btn.active,
+.category-btn.active:focus,
+.category-btn.active:hover {
+  background-color: #8b0000 !important;
+  color: #ffffff !important;
+  border-color: #8b0000 !important;
+}
+
 @view-transition {
   navigation: auto;
 }
