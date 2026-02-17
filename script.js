@@ -8,46 +8,6 @@ let config = { ...defaultConfig }
 // ✅ ВАЖНО: для карусели используем images: [...]
 // products are loaded from products.js
 
-// ===== Helper: Random saleType for clothes only =====
-function getRandomSaleType() {
-  const types = ['Вільний продаж', 'З погодження', 'По замовленню']
-  return types[Math.floor(Math.random() * types.length)]
-}
-
-// ===== Helper: Get color class for saleType badge =====
-function getSaleTypeClass(saleType) {
-  switch (saleType) {
-    case 'Вільний продаж':
-      return 'bg-green-100 text-green-700 border border-green-300'
-    case 'З погодження':
-      return 'bg-yellow-100 text-yellow-700 border border-yellow-300'
-    case 'По замовленню':
-      return 'bg-red-100 text-red-700 border border-red-300'
-    default:
-      return 'bg-gray-100 text-gray-700 border border-gray-300'
-  }
-}
-
-// ===== Data enrichment: add saleType to clothes only (run once) =====
-function enrichProducts(list) {
-  if (!Array.isArray(list)) return
-  list.forEach(product => {
-    if (product.category === 'clothes' && !product.saleType) {
-      product.saleType = getRandomSaleType()
-    }
-  })
-}
-
-// Run enrichment at startup
-enrichProducts(products)
-
-// ===== UI helper: render sale badge HTML (keeps renderProducts clean) =====
-function renderSaleBadge(product) {
-  if (!product || !product.saleType) return ''
-  const cls = getSaleTypeClass(product.saleType)
-  return `<div class="mb-3"><span class="inline-block px-3 py-1 text-xs font-bold rounded-full ${cls}">${product.saleType}</span></div>`
-}
-
 let cart = []
 let activeCategory = 'all'
 
@@ -155,7 +115,6 @@ function renderProducts() {
         <div class="p-4 flex flex-col flex-grow">
           <h3 class="font-bold text-base mb-2 text-gray-900">${product.name}</h3>
           <div class="mb-2"><span class="status-badge ${statusClass}">${statusText}</span></div>
-          ${renderSaleBadge(product)}
           ${sizesHtml}
           <div class="flex items-center justify-between mt-auto">
             <span class="text-lg font-bold text-[#8B0000]">${product.price} ₴</span>
