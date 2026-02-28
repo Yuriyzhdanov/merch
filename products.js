@@ -2,7 +2,7 @@ const products = [
   {
     id: 1,
     name: 'Худі "САПСАН 1.0"',
-    price: 1890,
+    price: 1500,
     category: 'clothes',
     images: [
       './img/hoodie_1_1.jpg',
@@ -15,7 +15,7 @@ const products = [
   {
     id: 2,
     name: 'Футболка "САПСАН"',
-    price: 790,
+    price: 1100,
     category: 'clothes',
     images: ['./img/t-short_1_1.jpg', './img/t-short_1_2.jpg'],
     inStock: true,
@@ -24,7 +24,7 @@ const products = [
   {
     id: 3,
     name: 'Кепка "САПСАН"',
-    price: 490,
+    price: 500,
     category: 'clothes',
     images: ['./img/cap_1_2.jpg', './img/cap_1_1.jpg'],
     inStock: false,
@@ -33,7 +33,7 @@ const products = [
   {
     id: 4,
     name: 'Худі "САПСАН 2.0"',
-    price: 1790,
+    price: 1500,
     category: 'clothes',
     images: ['./img/hoodie_2_1.jpg', './img/hoodie_2_2.jpg'],
     inStock: true,
@@ -42,7 +42,7 @@ const products = [
   {
     id: 5,
     name: 'Футболка "САПСАН"',
-    price: 690,
+    price: 1100,
     category: 'clothes',
     images: ['./img/t-short_2_1.jpg', './img/t-short_2_2.jpg'],
     inStock: true,
@@ -51,7 +51,7 @@ const products = [
   {
     id: 6,
     name: 'Кепка "САПСАН"',
-    price: 450,
+    price: 500,
     category: 'clothes',
     images: ['./img/cap_2_1.jpg', './img/cap_2_2.jpg'],
     inStock: true,
@@ -60,7 +60,7 @@ const products = [
   {
     id: 7,
     name: 'Блокнот батальйону',
-    price: 290,
+    price: 500,
     category: 'accessories',
     images: ['./img/note_1_1.jpg', './img/note_1_2.jpg'],
     inStock: true,
@@ -69,7 +69,7 @@ const products = [
   {
     id: 8,
     name: 'Худі "САПСАН 3.0"',
-    price: 1790,
+    price: 1500,
     category: 'clothes',
     images: ['./img/hoodie_3_1.jpg', './img/hoodie_3_2.jpg'],
     inStock: true,
@@ -78,7 +78,7 @@ const products = [
   {
     id: 9,
     name: 'Ручка "САПСАН"',
-    price: 89,
+    price: 50,
     category: 'stationery',
     images: ['./img/pen_1_1.jpg'],
     inStock: true,
@@ -94,7 +94,7 @@ const products = [
   {
     id: 11,
     name: 'Набір стікерів',
-    price: 149,
+    price: 100,
     category: 'stationery',
     images: ['./img/stikers_1.jpg'],
     inStock: true,
@@ -102,7 +102,7 @@ const products = [
   {
     id: 12,
     name: 'Брелок "САПСАН"',
-    price: 99,
+    price: 500,
     category: 'accessories',
     images: ['./img/brelok_1_1.jpg'],
     inStock: true,
@@ -110,7 +110,7 @@ const products = [
   {
     id: 13,
     name: 'Термопляшка "САПСАН"',
-    price: 79,
+    price: 1000,
     category: 'accessories',
     images: ['./img/termo_buttle.jpg'],
     inStock: true,
@@ -118,7 +118,7 @@ const products = [
   {
     id: 14,
     name: 'Термокелих "САПСАН"',
-    price: 79,
+    price: 1000,
     category: 'accessories',
     images: ['./img/termo_cup_1_1.jpg', './img/termo_cup_1_2.jpg'],
     inStock: true,
