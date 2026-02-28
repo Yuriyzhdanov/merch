@@ -83,14 +83,14 @@ const products = [
     images: ['./img/pen_1_1.jpg'],
     inStock: true,
   },
-  {
-    id: 10,
-    name: 'Прапор батальону',
-    price: 120,
-    category: 'symbolism',
-    images: ['./img/prapor_1_1.jpg'],
-    inStock: true,
-  },
+  // {
+  //   id: 10,
+  //   name: 'Прапор батальону',
+  //   price: 120,
+  //   category: 'symbolism',
+  //   images: ['./img/prapor_1_1.jpg'],
+  //   inStock: true,
+  // },
   {
     id: 11,
     name: 'Набір стікерів',
