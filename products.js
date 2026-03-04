@@ -60,7 +60,7 @@ const products = [
   {
     id: 7,
     name: 'Блокнот батальйону',
-    price: 500,
+    price: 250,
     category: 'accessories',
     images: ['./img/note_1_1.jpg', './img/note_1_2.jpg'],
     inStock: true,
